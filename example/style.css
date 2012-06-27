@@ -1,0 +1,96 @@
+/* 20120627225004 */@media all{html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}}@media all{body{line-height:1.6;font-size:90%;font-family:'Arial CE','Helvetica CE',Arial,Verdana,Helvetica,sans-serif;text-align:left}address,dl,p,pre,ol,table,ul{margin-bottom:1em}ul ul,ol ol,ul ol,ol ul{margin-bottom:0em}ul,ol,dd{margin-left:2em}ul{list-style-type:disc}ol{list-style-type:decimal}blockquote{margin-bottom:2em;margin-top:2em}pre{overflow:auto}sub,sup,small{font-size:smaller}big{font-size:larger}sub{vertical-align:sub}sup{vertical-align:super}code,kbd,pre,samp,tt,var,listing{font-family:'Courier New CE','Courier CE','Courier New',Courier,monospace}pre{-o-tab-size:4;-moz-tab-size:4;tab-size:4}address,blockquote,cite,dfn,em,i,ins,q,var{font-style:italic}b,kbd,strong,th{font-weight:bold}a,u{text-decoration:underline}del,s,strike{text-decoration:line-through}ins{text-decoration:none}h1,h2,h3,h4,h5,h6{font-family:"Trebuchet MS","Geneva CE","lucida",sans-serif;font-weight:bold;margin-bottom:0.15em;line-height:1.4}h1{font-size:250%}h2{font-size:210%}h3{font-size:180%}h4{font-size:140%}h5{font-size:120%}h6{font-size:100%}td,th,caption{padding:0.2em 0.6em;text-align:left}th{text-align:center}caption{text-align:center}form td,form tr{border:none}fieldset{border:1px solid #bbb;margin-bottom:1em;padding:0.6em 1em 1em}legend{margin-left:0.2em;padding:0 0.4em}hr{background:#eee;height:1px;border-width:0;border-top:1px solid #aaa}center{text-align:center}}@media all{pre{padding:0.6em 0.7em;background-color:#fafafa;border:1px dashed #d0d0d0;overflow:auto}code{background-color:#eee;padding:1px 2px;margin-left:1px;margin-right:1px}pre code{background-color:transparent;padding:0}table{border-collapse:collapse;margin-left:auto;margin-right:auto}th{background:#eee}td,th{border:1px solid #ddd}form th,form td,form tr{border:0;background:transparent}form th{text-align:right}caption{font-style:italic}blockquote{font-family:Georgia,'Times New CE','Times CE','Times New Roman',Times,serif;border-left:4px solid #e6e6e6;padding:1em 1.3em 0.1em;background-color:#fafafa}acronym[title],abbr[title]{border-bottom:1px dotted gray}h1,h2,h3,h4,h5,h6{color:#333}.noborder td,.noborder th,.no-border td,.no-border th{border-width:0}}@media print{pre,code{background:transparent;border:none}img{border-width:0}}@media all{p{text-indent:2em}}@media all{h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ul+p,ol+p,dl+p,blockquote>p:first-child,td>p:first-child,th>p:first-child,.grid-col>p:first-child,.grid-rcol>p:first-child,.grid-fluid>p:first-child,.grid-cell>p:first-child{text-indent:0}}@media all{a:link{color:#0044aa}a:visited{color:#00255c}a:focus{}a:hover{color:#d22}a:active{}}
+
+body {
+	background: #f8f8f8;
+}
+
+#wrapper {
+	max-width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	position: relative;
+}
+
+.description {
+	color: #666;
+	font-size: 105%;
+	font-style: italic;
+	font-family: "Georgia", sans-serif;
+}
+
+h2 {
+	border-top: 1px solid silver;
+	margin-top: 0.5em;
+	padding-top: 0.2em;
+}
+
+pre {
+	border-radius: 4px;
+}
+
+pre + p {
+	text-indent: 0;
+}
+
+pre + h2 {
+	margin-top: 1em;
+}
+
+h3 {
+	font-size: 160%;
+	color: #444;
+	margin-top: 1.4em;
+}
+
+h4 {
+	font-size: 130%;
+	color: #444;
+}
+
+h2 + h3 {
+	margin-top: 0;
+}
+
+#menu {
+	position: absolute;
+	right: 0;
+	top: 1em;
+}
+
+#menu a {
+	padding-left: 1em;
+}
+
+#footer {
+	margin-top: 3em;
+	color: #555;
+}
+
+.gallery {
+	margin: 2em 0;
+}
+
+.gallery a {
+	display: block;
+/*	margin: 1em;*/
+	float: left;
+	width: 25%;
+	text-align: center;
+/*	background: red;*/
+}
+
+.gallery img {
+	max-width: 200px;
+	max-height: 200px;
+	padding: 4px;
+	border: 1px solid silver;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.clearer {
+	clear: both;
+	display: block;
+}
+

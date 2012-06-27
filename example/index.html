@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<meta name="author" content="Jan Pecha, http://janpecha.iunas.cz/">
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="../czbox/czbox.css" type="text/css">
+	
+	<title>CzBox2 - example</title>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>CzBox2</h1>
+		<span class="description">Photo lightbox based on <a href="http://zeptojs.com/">Zepto.JS</a> &amp; CSS</span>
+		
+		<div id="menu">
+			<a href="#single">Single images</a>
+			<a href="#roadmap">Roadmap</a>
+			<a href="#docs">Docs</a>
+			<a href="#license">License</a>
+		</div>
+		
+		<h2 id="single">Single image gallery</h2>
+		<div class="gallery">
+			<a href="Image000.jpg" rel="czbox">
+				<img src="Image000_thumb.jpg">
+			</a>
+			
+			<a href="Image001.jpg" rel="czbox">
+				<img src="Image001_thumb.jpg">
+			</a>
+			
+			<a href="Image002.jpg" rel="czbox">
+				<img src="Image002_thumb.jpg">
+			</a>
+			
+			<a href="Image003.jpg" rel="czbox">
+				<img src="Image003_thumb.jpg">
+			</a>
+			
+			<span class="clearer"></span>
+		</div>
+		
+		
+		<h2 id="roadmap">Roadmap gallery</h2>
+		<div class="gallery">
+			<a href="Image000.jpg" rel="czbox[myroutemap]">
+				<img src="Image000_thumb.jpg">
+			</a>
+			
+			<a href="Image001.jpg" rel="czbox[myroutemap]">
+				<img src="Image001_thumb.jpg">
+			</a>
+			
+			<a href="Image002.jpg" rel="czbox[myroutemap]">
+				<img src="Image002_thumb.jpg">
+			</a>
+			
+			<a href="Image003.jpg" rel="czbox[myroutemap]">
+				<img src="Image003_thumb.jpg">
+			</a>
+			
+			<span class="clearer"></span>
+		</div>
+		
+		
+		<h2 id="docs">Docs</h2>
+		
+		<h3>Basic</h3>
+		<h4>Load Zepto.JS and CzBox</h4>
+		<p>Load <a href="http://zeptojs.com/">Zepto.JS</a>:</p>
+		<pre><code class="jush">&lt;script type="text/javascript" src="zepto.js"&gt;&lt;/script></code></pre>
+		<p>Load CzBox2:</p>
+		<pre><code class="jush">&lt;script type="text/javascript" src="./czbox/czbox2.js">&lt;/script&gt;</code></pre>
+
+		<h4>Set CzBox skin</h4>
+		<pre><code class="jush">&lt;link rel="stylesheet" type="text/css" href="./czbox/czbox.css"&gt;</code></pre>
+		
+		<h4>Add image to HTML document</h4>
+		<p>Images must have set attribute <code>rel="czbox"</code></p>
+		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
+	&lt;img src="photos/foto1_big.jpg">
+&lt;/a></code></pre>
+		<p>or alternatively <code>rel="lightbox"</code></p>
+		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="lightbox">
+	&lt;img src="photos/foto1_big.jpg">
+&lt;/a></code></pre>
+		
+		<h4>Run CzBox</h4>
+		<pre><code class="jush">&lt;script type="text/javascript">
+	Zepto(function($){
+		CzBox.create();
+	});
+&lt;/script></code></pre>
+		<p>or only (for script on end of document):</p>
+		<pre><code class="jush">&lt;script type="text/javascript">
+	CzBox.create();
+&lt;/script></code></pre>
+
+		<h3>Create roadmaps</h3>
+		<p>We use <code>rel="czbox[myRoadMapID]"</code> instead of <code>rel="czbox"</code>:</p>
+		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto1_big.jpg">&lt;/a>
+&lt;a href="photos/foto2_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto2_big.jpg">&lt;/a>
+&lt;a href="photos/foto3_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto3_big.jpg">&lt;/a></code></pre>
+		
+		<h3>Image description</h3>
+		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
+	&lt;img src="photos/foto1_big.jpg" title="this is description">
+&lt;/a></code></pre>
+<p>or</p>
+<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox" title="this is description">
+	&lt;img src="photos/foto1_big.jpg">
+&lt;/a></code></pre>
+<p>or</p>
+<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
+	&lt;img src="photos/foto1_big.jpg" alt="this is description">
+&lt;/a></code></pre>
+		
+		
+		<h2 id="license">License</h2>
+		<pre>
+Copyright © 2012 Jan Pecha (http://janpecha.iunas.cz/) All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+* Neither the name of “CzBox” nor the names of its contributors may be used to
+  endorse or promote products derived from this software without specific prior
+  written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+		
+		<p id="footer">
+			&copy; <a href="http://janpecha.iunas.cz/">Jan Pecha</a>, 2012
+		</p>
+	</div>
+	
+	<!-- load CzBox -->
+	<script type="text/javascript" src="../zepto.js"></script>
+	<script type="text/javascript" src="../czbox/czbox2.js"></script>
+	<script type="text/javascript">
+		CzBox.create();
+	</script>
+	
+	<!-- load syntax highlighter -->
+	<script type="text/javascript" src="jush.js"></script>
+	<script type="text/javascript">
+	jush.style('jush.css');
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	</script>
+</body>
+</html>
