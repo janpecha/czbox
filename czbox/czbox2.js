@@ -2,7 +2,6 @@
  * CzBox2 - simple Zepto.js lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
  * @version		2012-06-27-1
- * @todo		[ok 2012-06-27]	2012-06-27 - hidden next,prev button if show last,first image
  */
 
 var CzBox = CzBox || {};
@@ -16,9 +15,6 @@ CzBox.lang = {
 	textNext: "Next",
 	textClose: "Close",
 	textLoading: "Loading",
-	
-	//autoHorizontalPos: true,
-	//autoVerticalPos: true
 };
 
 /** Object */
@@ -45,7 +41,6 @@ CzBox.create = function() {
 	// rel attr regexp: /(czbox|lightbox)(\[(.+)\])?/
 	var rels = CzBox.enableRels.join('|');
 	rels = '(' + rels + ')(\\[(.+)\\])?';
-//	var relParseRegExp = new RegExp(rels);
 	CzBox.scanDocument('a[rel*=lightbox] > img, a[rel*=czbox] > img', new RegExp(rels));
 }
 
@@ -77,7 +72,6 @@ CzBox.modifyDom = function() {
 
 CzBox.init = function() {
 	// Close event
-	// TODO: add Esc handler
 	$('#czbox-btn-close, #czbox-background').on('click', function() {
 		CzBox.close();
 		
@@ -90,8 +84,7 @@ CzBox.init = function() {
 		
 		return false;
 	});
-	// TODO: touch event
-	// TODO: right key
+	// TODO: touch event - swipeRight, swipeDown
 	
 	// Prev event
 	$('#czbox-btn-prev').on('click', function() {
@@ -99,8 +92,7 @@ CzBox.init = function() {
 		
 		return false;
 	});
-	// TODO: touch event
-	// TODO: left key
+	// TODO: touch event - swipeLeft, swipeUp
 	
 	// Keyboard events
 	$('body').on('keydown', function(e) {
@@ -143,17 +135,11 @@ CzBox.init = function() {
 	
 	// Onload event
 	$('#czbox-image').on('load', function() {
-		//$(this).addClass('czbox-open');
-		//$(this).css('display', 'block');
 		$('#czbox-loading').css('display', 'none');
 		
 		$(this).parent().animate({
 			opacity: 1
 		}, 600);
-//		alert($(this).width());
-			//.animate({
-			//	width: alert($(this.css('width'))), height:  $(this.css('width'))
-			//}, 2, 'ease-out');
 	});
 }
 
@@ -169,7 +155,6 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 		// vygenerovat seznam nodes - pouzit data-czbox-num, cat
 		var anchor = $(this).parent();
 		var rel = anchor.attr('rel');
-//		alert(rel);
 		rel = CzBox.parseRelAttr(rel, parseRelAttrRegExp);
 		
 		if(rel === '')
@@ -183,13 +168,8 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 		
 		if(typeof CzBox.nodes[rel] === 'undefined')
 		{
-//			CzBox.nodes[rel] = 1;
 			CzBox.nodes[rel] = new Array;
 		}
-//		else
-//		{
-//			CzBox.nodes[rel] += 1;
-//		}
 		
 		CzBox.nodes[rel].push(anchor);
 		
@@ -198,7 +178,6 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 		
 		anchor.on('click', function() {
 			CzBox.open(this);
-			//alert(this.href);
 			return false;
 		});
 	});
@@ -215,7 +194,6 @@ CzBox.open = function(anchor) {
 	
 		$('#czbox-loading').css('display', 'block');
 	
-		//$('#czbox-image').css('opacity', 0)
 		$('#czbox-image-wrapper').css('opacity', 0);
 		$('#czbox-image').attr('src', anchor.href);
 	
@@ -266,7 +244,7 @@ CzBox.update = function(anchor) {
 	{
 		// hidden image number && image 'of'
 		$('#czbox-info-bar').hide();
-		// TODO: hidden next & prev buttons
+		// hidden next & prev buttons
 		$('#czbox-btn-next').hide();
 		$('#czbox-btn-prev').hide();
 	}
