@@ -7,23 +7,338 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	background: red;
-	max-width: 100%;
-	max-height: 100%;
-/*	overflow: hidden;*/
+	width: 100%;
+	height: 100%;
+	background-color: #222;
+	background-color: rgba(34,34,34,0.97);
+	background-color: rgba(17,17,17,0.97);
+	color: #fff;
+	display: none;
+	overflow: hidden;
+	font-size: 90%;
+	z-index: 5000;
 }
 
 #czbox-box.czbox-open {
-	background: green;
+	display: block;
+}
+
+#czbox-background {
+	display: none;
+}
+
+#czbox-image-wrapper {
+	opacity: 0;
+/*	max-width: 100%;*/
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+	position: absolute;
+	text-align: center;
+}
+
+#czbox-image-wrapper:before {
+	content: '';
+	display: inline-block;
+	height: 100%; 
+	vertical-align: middle;
+	/*margin-right: -0.25em; /* Adjusts for spacing */
+	
+/*	background: red;*/
+/*	width: 5px;*/
+/*	opacity: 0.4;*/
 }
 
 #czbox-image {
-	opacity: 0;
+	opacity: inherit;
 	max-width: 100%;
+	max-height: 100%;
 	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 5200;
+	vertical-align: middle;
+	
+	display: inline-block;
+	vertical-align: middle;
+/*	display: none;*/
+	/* TODO: vertical center */
 }
 
-#czbox-image.czbox-open {
+/** Description */
+#czbox-description {
+	position: absolute;
+/*	top: 0;*/
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	line-height: 1.6em;
+	font-size: 90%;
+	z-index: 5250;
+	background: #111;
+	background-color: rgba(17,17,17,0.9);
+	color: #ddd;
+/*	border-bottom: 1px solid #444;*/
+	border-top: 1px solid #333;
+	padding: 6px 6px;
+	display: none;
+}
+
+
+/** Buttons */
+#czbox-btn-close, #czbox-btn-next, #czbox-btn-prev {
+/*	min-width: 44px;*/
+/*	min-height: 44px;*/
+	text-decoration: none;
+	color: inherit;
+}
+
+#czbox-btn-close:hover, #czbox-btn-next:hover, #czbox-btn-prev:hover {
+/*	background: rgba(40,40,40,0.9);*/
+}
+
+
+/** Next & Prev buttons */
+#czbox-btn-next, #czbox-btn-prev {
+	width: 50%;
+	height: 100%;
+/*	border: 1px solid #444;*/
 	display: block;
-	border: 4px solid red;
+	position: absolute;
+	top: 0;
+	font-size: 110%
+	z-index: 5300;
+}
+
+#czbox-btn-next {
+	right: 0;
+	text-align: right;
+}
+
+#czbox-btn-prev {
+	left: 0;
+}
+
+#czbox-btn-next span, #czbox-btn-prev span {
+	background: #444;
+	background: rgba(68,68,68,0.8);
+	position: absolute;
+	top: 50%;
+	padding: 9px 20px;
+	opacity: 0.4;
+/*	visibility: hidden;*/
+	border: 2px solid #555;
+}
+
+#czbox-btn-next span {
+	right: 0;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#czbox-btn-prev span {
+	left: 0;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+#czbox-btn-next:hover span, #czbox-btn-prev:hover span {
+/*	visibility: visible;*/
+	opacity: 1;
+}
+
+
+/** Close button */
+#czbox-btn-close {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	text-align: center;
+/*	background: red;*/
+	width: auto;
+/*	line-height: 44px;*/
+	display: table-cell;
+	padding: 2px 14px;
+	border: 2px solid #666;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	line-height: 2em;
+	background: #444;
+	background: rgba(68,68,68,0.8);
+	opacity: 0.6;
+	z-index: 5400;
+}
+
+#czbox-btn-close:hover {
+	background: #555;
+	background: rgba(85,85,85,0.8);
+	opacity: 1;
+}
+
+
+/** Info bar */
+#czbox-info-bar {
+	color: #ccc;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-size: 90%;
+	line-height: 1.6em;
+	z-index: 5250;
+	background: #111;
+	background-color: rgba(17,17,17,0.7);
+/*	border-bottom: 1px solid #444;*/
+	padding: 4px 6px;
+}
+
+
+/** Loading */
+#czbox-loading {
+	display: block;
+	border: 1px solid #444;
+	padding: 3px;
+	width: 60px;
+	height: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	
+	overflow: hidden;
+	
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -34px;	/* (width + padding-left + padding-right + border-width) / 2 */
+}
+
+#czbox-loading span {
+	width: 0px;
+	height: 20px;
+	border: 20px solid transparent;
+	border-width: 0 20px;
+	
+	border-left-color: #aaa;
+	background: #888;
+	border-right-color: #666;
+	
+	display: block;
+	padding-left: 20px;
+	overflow: hidden;
+	-o-animation: czboxloader 1s infinite linear;
+	-moz-animation: czboxloader 1s infinite linear;
+	-webkit-animation: czboxloader 1s infinite linear;
+	-ms-animation: czboxloader 1s infinite linear;
+	animation: czboxloader 1s infinite linear;
+}
+
+@-o-keyframes czboxloader {
+	0% {
+		border-left-color: #aaa;
+		background: #888;
+		border-right-color: #666;
+	}
+	
+	33% {
+		border-left-color: #666;
+		background: #aaa;
+		border-right-color: #888;
+	}
+	
+	66% {
+		border-left-color: #888;
+		background: #666;
+		border-right-color: #aaa;
+	}
+}
+
+@-moz-keyframes czboxloader {
+	0% {
+		border-left-color: #aaa;
+		background: #888;
+		border-right-color: #666;
+	}
+	
+	33% {
+		border-left-color: #666;
+		background: #aaa;
+		border-right-color: #888;
+	}
+	
+	66% {
+		border-left-color: #888;
+		background: #666;
+		border-right-color: #aaa;
+	}
+}
+
+@-webkit-keyframes czboxloader {
+	0% {
+		border-left-color: #aaa;
+		background: #888;
+		border-right-color: #666;
+	}
+	
+	33% {
+		border-left-color: #666;
+		background: #aaa;
+		border-right-color: #888;
+	}
+	
+	66% {
+		border-left-color: #888;
+		background: #666;
+		border-right-color: #aaa;
+	}
+}
+
+@-ms-keyframes czboxloader {
+	0% {
+		border-left-color: #aaa;
+		background: #888;
+		border-right-color: #666;
+	}
+	
+	33% {
+		border-left-color: #666;
+		background: #aaa;
+		border-right-color: #888;
+	}
+	
+	66% {
+		border-left-color: #888;
+		background: #666;
+		border-right-color: #aaa;
+	}
+}
+
+@keyframes czboxloader {
+	0% {
+		border-left-color: #aaa;
+		background: #888;
+		border-right-color: #666;
+	}
+	
+	33% {
+		border-left-color: #666;
+		background: #aaa;
+		border-right-color: #888;
+	}
+	
+	66% {
+		border-left-color: #888;
+		background: #666;
+		border-right-color: #aaa;
+	}
 }

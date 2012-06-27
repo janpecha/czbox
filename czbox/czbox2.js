@@ -55,7 +55,7 @@ CzBox.modifyDom = function() {
 	{
 		$('body').first().append('<div id="czbox-box">'
 				+ '<div id="czbox-background"></div>'
-				+ '<div id="czbox-imagebox">'
+				+ '<div id="czbox-image-box">'
 					+ '<div id="czbox-description"></div>'
 					+ '<div id="czbox-info-bar">'
 						+ this.lang.textImage
@@ -63,11 +63,11 @@ CzBox.modifyDom = function() {
 						+ this.lang.textOf
 						+ ' <span id="czbox-images-count"></span> '
 					+ '</div>'
-					+ '<div id="czbox-loading">' + this.lang.textLoading + '</div>'
-					+ '<img id="czbox-image" src="#" alt="">'
-					+ '<a id="czbox-btn-prev" href="#">' + this.lang.textPrev + '</a>'
-					+ '<a id="czbox-btn-next" href="#">' + this.lang.textNext + '</a>'
-					+ '<a id="czbox-btn-close" href="#">' + this.lang.textClose + '</a>'
+					+ '<div id="czbox-loading"><span>' + this.lang.textLoading + '</span></div>'
+					+ '<div id="czbox-image-wrapper"><img id="czbox-image" src="#" alt=""></div>'
+					+ '<a id="czbox-btn-prev" href="#"><span>' + this.lang.textPrev + '</span></a>'
+					+ '<a id="czbox-btn-next" href="#"><span>' + this.lang.textNext + '</span></a>'
+					+ '<a id="czbox-btn-close" href="#"><span>' + this.lang.textClose + '</span></a>'
 				+ '</div>'
 			+ '</div>'
 		);
@@ -108,7 +108,7 @@ CzBox.init = function() {
 		//$(this).css('display', 'block');
 		$('#czbox-loading').css('display', 'none');
 		
-		$(this).animate({
+		$(this).parent().animate({
 			opacity: 1
 		}, 600);
 //		alert($(this).width());
@@ -176,8 +176,9 @@ CzBox.open = function(anchor) {
 	
 		$('#czbox-loading').css('display', 'block');
 	
-		$('#czbox-image').css('opacity', 0)
-			.attr('src', anchor.href);
+		//$('#czbox-image').css('opacity', 0)
+		$('#czbox-image-wrapper').css('opacity', 0);
+		$('#czbox-image').attr('src', anchor.href);
 	
 		CzBox.update(anchor);
 	}
@@ -259,7 +260,17 @@ CzBox.update = function(anchor) {
 	}
 	
 	// Update description
-	$('#czbox-description').html(CzBox.getDescription(anchor));
+	var description = CzBox.getDescription(anchor);
+	
+	if(description !== '')
+	{
+		$('#czbox-description').html(description)
+			.show();
+	}
+	else
+	{
+		$('#czbox-description').hide();
+	}
 	
 	// Update private data
 	CzBox.currentRel = rel;
