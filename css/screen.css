@@ -1,0 +1,184 @@
+/* CSS dokument pro sluzatky.iunas.cz, (c) Jan Pecha, 2010 */
+
+body {
+    margin: 0em;
+    font-family: Verdana, sans-serif;
+    /*font-size: 30px;*/
+}
+
+.stredem {
+    width: 48em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menu {
+    background: #333333;
+    line-height: 1.5em;
+    line-height: 1.8em;
+    line-height: 1.7em;
+}
+
+#menu a {
+    color: white;
+    font-size: 0.8em;
+    margin: 0em;
+    margin-right: 2em;
+    text-decoration: none;
+    line-height: 1.7em;
+}
+
+
+#menu a:hover {
+    background-color: #444444;
+}
+
+#hlava {
+    background: #4493CA;
+    color: white;
+    /*border-top: 0.05em solid #116097;*/
+    position: relative;
+    display: none;
+}
+
+#hlava .stredem {
+    min-height: 104px;
+    height: 7em;
+    /*line-height: 104px;*/
+    position: relative;
+}
+
+#hlava div.stredem div {
+    background: url("../images/fotka.png") no-repeat right top;
+    width: 176px;
+    height: 135px;
+    position: absolute;
+    right: 0px;
+    bottom: -15px;
+}
+
+#hlava .stredem span {
+    display: block;
+    position: absolute;
+    bottom: 2.5em;
+    left: 0em;
+    /*top: 50%;
+    margin-top: -3%;*/
+    
+    font-size: 0.8em;
+}
+
+#hlava .stredem span a {
+    color: white;
+    text-decoration: none;
+    font-size: 2.5em;
+}
+
+
+#hlava a {
+    display: block;
+}
+
+#telicko {
+    background: white url("../images/prechod_pod_hlavou.gif") repeat-x;
+}
+
+#obsah {
+    float: right;
+    width: 36em;
+    margin-bottom: 4em;
+}
+
+#obsah p, #obsah ul, #obsah ol, #obsah table {
+    text-align: justify;
+    line-height: 1.4em;
+    font-size: 0.8em;
+    padding-bottom: 0.2em;
+}
+
+#obsah p img {
+    border: 1px solid silver;
+    padding: 4px;
+    margin: 0.3em;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    border: 1px solid silver;
+    padding: 0.2em;
+}
+
+#lmenu {
+    float: left;
+    width: 10em;
+    /*background: #AAAAAA;*/
+    overflow: auto;
+    margin-bottom: 4em;
+    margin-top: 1em;
+}
+
+#lmenu ul {
+    padding-left: 0em;
+    font-size: 0.9em;
+    line-height: 1.8em;
+}
+
+#lmenu ul a {
+    text-decoration: none;
+    color: #222222;
+}
+
+#lmenu ul a:hover {
+    text-decoration: underline;
+}
+
+#lmenu ul a.tuto {
+    color: #1F7DC0;
+    /*font-weight: bold;*/
+}
+
+#lmenu ul ul {
+    margin-left: 1em;
+    margin-left: 0em;
+    margin-bottom: 0.7em;
+    margin-left: -0.6em;
+}
+
+#lmenu li {
+    list-style-type: none;
+    border-bottom: 0.05em solid #D1D1D1; /*#C1C1C1;*/
+    margin: 0.1em 0em;
+    padding-left: 0.6em;
+}
+
+#lmenu ul ul li {
+    border-width: 0em;
+}
+
+#pata {
+    clear: both;
+    border-top: 0.05em solid #B7B7B7;
+    font-size: 0.7em;
+    line-height: 1.5em;
+    padding: 0em 2em;
+    color: #444444;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Trebuchet MS", sans-serif;
+    color: #4795CB;
+    font-weight: normal;
+    margin-bottom: 0em;
+}
+
+a {
+/*	display: block;*/
+	width: 100%;
+	
+}
+
