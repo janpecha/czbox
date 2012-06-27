@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<link rel="stylesheet" href="../czbox/czbox.css" type="text/css">
 	
-	<title>CzBox2 - example</title>
+	<title>CzBox2 - photo lightbox</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -107,14 +107,15 @@
 &lt;a href="photos/foto3_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto3_big.jpg">&lt;/a></code></pre>
 		
 		<h3>Image description</h3>
+		<p>We prefer <code>&lt;img title></code> attribute for image description:</p>
 		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
 	&lt;img src="photos/foto1_big.jpg" title="this is description">
 &lt;/a></code></pre>
-<p>or</p>
+<p>or you can use <code>&lt;a title></code></p>
 <pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox" title="this is description">
 	&lt;img src="photos/foto1_big.jpg">
 &lt;/a></code></pre>
-<p>or</p>
+<p>or <code>&lt;img alt></code></p>
 <pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
 	&lt;img src="photos/foto1_big.jpg" alt="this is description">
 &lt;/a></code></pre>
@@ -148,7 +149,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </pre>
 		
 		<p id="footer">
-			&copy; <a href="http://janpecha.iunas.cz/">Jan Pecha</a>, 2012
+			&copy; <a href="http://janpecha.iunas.cz/">Jan Pecha</a>, 2012<br>
+			We use <a href="http://jush.sourceforge.net/" title="JavaScript syntax highlighter">Jush</a> and <a href="http://typro.iunas.cz/" title="CSS framework">Typro</a> on this page.
 		</p>
 	</div>
 	
