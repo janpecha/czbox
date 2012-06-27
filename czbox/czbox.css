@@ -92,6 +92,7 @@
 /*	min-height: 44px;*/
 	text-decoration: none;
 	color: inherit;
+	outline: none;
 }
 
 #czbox-btn-close:hover, #czbox-btn-next:hover, #czbox-btn-prev:hover {

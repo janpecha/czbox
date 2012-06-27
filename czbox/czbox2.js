@@ -102,6 +102,45 @@ CzBox.init = function() {
 	// TODO: touch event
 	// TODO: left key
 	
+	// Keyboard events
+	$('body').on('keydown', function(e) {
+		var code;
+		
+		if(!e)
+		{
+			var e = window.event;
+		}
+		
+		if(e.keyCode)
+		{
+			code = e.keyCode;
+		}
+		else if(e.which)
+		{
+			code = e.which;
+		}
+
+		switch(code)
+		{
+			case 27/*ESC*/:
+				CzBox.close();
+				break;
+			
+			case 13/*Enter*/:
+			case 39/*Right key*/:
+			case 40/*Down key*/:
+				CzBox.next();
+				break;
+			
+			case 37/*Left key*/:
+			case 38/*Up key*/:
+				CzBox.prev();
+				break;
+		}
+		
+		return false;
+	});
+	
 	// Onload event
 	$('#czbox-image').on('load', function() {
 		//$(this).addClass('czbox-open');
