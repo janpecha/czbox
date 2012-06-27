@@ -116,21 +116,22 @@ CzBox.init = function() {
 		{
 			case 27/*ESC*/:
 				CzBox.close();
-				break;
+				return false;
+				//break;
 			
 			case 13/*Enter*/:
 			case 39/*Right key*/:
 			case 40/*Down key*/:
 				CzBox.next();
-				break;
+				return false;
+				//break;
 			
 			case 37/*Left key*/:
 			case 38/*Up key*/:
 				CzBox.prev();
-				break;
+				return false;
+				//break;
 		}
-		
-		return false;
 	});
 	
 	// Onload event
