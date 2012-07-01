@@ -19,6 +19,12 @@
 	z-index: 5000;
 }
 
+@media print {
+	#czbox-box {
+		display: none !important;
+	}
+}
+
 #czbox-box.czbox-open {
 	display: block;
 }
