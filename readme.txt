@@ -1,13 +1,12 @@
-CzBox2
-######
+CzBox2 - only pure JS
+#####################
 
-Photo lightbox based on Zepto.JS & CSS
+Photo lightbox based on pure JS & CSS
 
 Usage
 =====
 
-1) Load Zepto.JS and CzBox
-	<script type="text/javascript" src="zepto.js"></script>
+1) Load CzBox
 	<script type="text/javascript" src="./czbox/czbox2.js"></script>
 	
 2) Set skin
@@ -19,15 +18,12 @@ Usage
 	<a href="photos/foto1_thumb.jpg" rel="lightbox"><img src="photos/foto1_big.jpg"></a>
 
 4) Run init CzBox
-	<script type="text/javascript">
-		Zepto(function($){
-			CzBox.create();
-		});
-	</script>
-	
-	or only (for script on end of document):
+	for script on end of document:
 	
 	<script type="text/javascript">
+		// config
+		// CzBox.langCs();
+				
 		CzBox.create();
 	</script>
 
@@ -53,7 +49,7 @@ or
 Example
 =======
 
-Live example on site http://janpecha.iunas.cz/czbox/example/ or see /example directory.
+Live example on site http://janpecha.iunas.cz/czbox/example-only-js/ or see /example directory.
 
 
 License
