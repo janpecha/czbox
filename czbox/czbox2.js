@@ -1,14 +1,13 @@
 /**
  * CzBox2 - simple Zepto.js lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-06-27-1
+ * @version		2012-07-01-1
  */
 
 var CzBox = CzBox || {};
 
 /** Object */
 CzBox.lang = {
-	// [Config]
 	textImage: "Image",
 	textOf: "of",
 	textPrev: "Previous",
@@ -350,4 +349,17 @@ CzBox.getDescription = function(zeptoAnchor) {
 	
 	return '';
 }
+
+
+
+/** Translations */
+CzBox.langCs = function() {
+	CzBox.lang.textImage = "Obrázek";
+	CzBox.lang.textOf = "ze";
+	CzBox.lang.textPrev = "Předchozí";
+	CzBox.lang.textNext = "Další";
+	CzBox.lang.textClose = "Zavřít";
+	CzBox.lang.textLoading = "Načítám";
+}
+
 
