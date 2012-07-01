@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-07-01-1
+ * @version		2012-07-01-2
  */
 
 var CzBox = CzBox || {};
@@ -76,7 +76,7 @@ CzBox.modifyDom = function() {
 	}
 }
 
-
+/** Events binding */
 CzBox.init = function() {
 	// Close event
 	$('#czbox-btn-close, #czbox-background').on('click', function() {
@@ -140,6 +140,19 @@ CzBox.init = function() {
 				//break;
 		}
 	});
+	
+	// Mouse wheel event
+	/** Initialization code. 
+	 * @url		http://www.adomas.org/javascript-mouse-wheel/
+	 */
+	if (window.addEventListener)
+	{
+		/** DOMMouseScroll is for mozilla */
+		window.addEventListener('DOMMouseScroll', CzBox.handlerWheel, false);
+	}
+	
+	/** IE/Opera */
+	window.onmousewheel = document.onmousewheel = CzBox.handlerWheel;
 	
 	// Onload event
 	$('#czbox-image').on('load', function() {
@@ -356,6 +369,30 @@ CzBox.getDescription = function(zeptoAnchor) {
 	}
 	
 	return '';
+}
+
+
+CzBox.handlerWheel = function(e) {
+	if($('#czbox-box').hasClass('czbox-open'))
+	{
+		e = e ? e : window.event;
+	
+		if(e.stopPropagation)
+		{
+			e.stopPropagation();
+		}	
+	
+		if(e.preventDefault)
+		{
+			e.preventDefault();
+		}
+	
+		e.cancelBubble = true;
+		e.cancel = true;
+		e.returnValue = false;
+		
+		return false;
+	}
 }
 
 
