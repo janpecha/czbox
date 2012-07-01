@@ -19,6 +19,9 @@ CzBox.lang = {
 /** Object */
 CzBox.nodes = {};
 
+/** bool */
+CzBox._created = false;
+
 /** Array */
 CzBox.enableRels = ['czbox', 'lightbox'];
 
@@ -30,17 +33,22 @@ CzBox.currentIndex = 0;
 
 
 CzBox.create = function() {
-	// DOM modify
-	CzBox.modifyDom();
+	if(CzBox._created === false)
+	{
+		CzBox._created = true;
+		
+		// DOM modify
+		CzBox.modifyDom();
 	
-	// Default events binding
-	CzBox.init();
+		// Default events binding
+		CzBox.init();
 	
-	// Scan document - fill $nodes
-	// rel attr regexp: /(czbox|lightbox)(\[(.+)\])?/
-	var rels = CzBox.enableRels.join('|');
-	rels = '(' + rels + ')(\\[(.+)\\])?';
-	CzBox.scanDocument('a[rel*=lightbox] > img, a[rel*=czbox] > img', new RegExp(rels));
+		// Scan document - fill $nodes
+		// rel attr regexp: /(czbox|lightbox)(\[(.+)\])?/
+		var rels = CzBox.enableRels.join('|');
+		rels = '(' + rels + ')(\\[(.+)\\])?';
+		CzBox.scanDocument('a[rel*=lightbox] > img, a[rel*=czbox] > img', new RegExp(rels));
+	}
 }
 
 
