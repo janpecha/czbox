@@ -168,9 +168,18 @@ CzBox.currentIndex = 0;
 	window.onmousewheel = document.onmousewheel = CzBox.handlerWheel;
 	
 	// Onload event
-	CzBox.framework.addEvent(document.getElementById('czbox-image'), 'load', function() {
+	CzBox.framework.addEvent(document.getElementById('czbox-image'), 'load', function(e) {
 		document.getElementById('czbox-loading').style.display = 'none';
-		this.parentNode.style.opacity = 1;
+		
+		if(window !== this) // IE
+		{
+			this.parentNode.style.opacity = 1;
+		}
+		else
+		{
+			CzBox.framework.getSrcElement(e).parentNode.parentNode.style.opacity = 1;
+		}
+		
 // TODO: animate
 //		$(this).parent().animate({
 //			opacity: 1
@@ -217,7 +226,14 @@ CzBox.currentIndex = 0;
 			anchor.setAttribute('data-czbox-index', CzBox.nodes[rel].length - 1);
 		
 			CzBox.framework.addEvent(anchor, 'click', function(e) {
-				CzBox.open(this);
+				if(window !== this)
+				{
+					CzBox.open(this);
+				}
+				else
+				{
+					CzBox.open(CzBox.framework.getSrcElement(e).parentNode);
+				}
 				
 				CzBox.framework.cancelEvent(e);
 				return false;
@@ -450,14 +466,23 @@ CzBox.framework.hasClass = function(el, classNm) {
 
 /****** events ******/
 CzBox.framework.cancelEvent = function(e) {
-	if(window.event)
+	e = e ? e : window.event;
+
+	if(e.stopPropagation)
 	{
-		event.returnValue = false;
-	}
-	else
+		e.stopPropagation();
+	}	
+
+	if(e.preventDefault)
 	{
 		e.preventDefault();
 	}
+
+	e.cancelBubble = true;
+	e.cancel = true;
+	e.returnValue = false;
+	
+	return false;
 }
 
 CzBox.framework.addEvent = function(el, type, handler) {
@@ -474,6 +499,17 @@ CzBox.framework.addEvent = function(el, type, handler) {
 		}
 	}
 	return false;
+}
+
+CzBox.framework.getSrcElement = function(e){
+	if(window.event)
+	{
+		return event.srcElement;
+	}
+	else
+	{
+		return e.target;	//event.target (OP, FF)
+	}
 }
 
 /****** CSS ******/

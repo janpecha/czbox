@@ -200,6 +200,7 @@
 	border-radius: 4px;
 	
 	overflow: hidden;
+	z-index: 6000;
 	
 	position: absolute;
 	left: 50%;
