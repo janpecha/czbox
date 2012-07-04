@@ -1,7 +1,7 @@
 /**
- * CzBox2 - simple Zepto.js lightbox
+ * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-07-01-2
+ * @version		2012-07-04-1
  */
 
 var CzBox = CzBox || {};
