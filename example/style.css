@@ -40,15 +40,8 @@ h2 {
 	margin-top: 1em;
 }
 
-h2:target:after {
-	content: "To Top";
-	font-size: 50%;
-	vertical-align: super;
-	padding-left: 1em;
-}
-
 h2:target {
-	color: #236;
+/*	color: #236;*/
 	color: #00255C;
 	border-color: #00255C;
 }
