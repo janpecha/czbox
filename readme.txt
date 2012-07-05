@@ -43,6 +43,10 @@ Add rel="czbox" attribute to any link to activate CzBox (or alternatively rel="l
 	
 	<a href="photos/photo1.jpg" rel="czbox">Photo #1</a>
 
+Note: you can use data-czbox-href="" attribute for address of image:
+
+	<a href="http://example.com/" rel="czbox" data-czbox-href="photos/photo1.jpg">Photo #1</a>
+
 
 Optionally you can add <a title> attribute for show a caption (or can use <a><img title> or <a><img alt>)
 

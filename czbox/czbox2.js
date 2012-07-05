@@ -216,7 +216,15 @@ CzBox.open = function(anchor) {
 		$('#czbox-loading').css('display', 'block');
 	
 		$('#czbox-image-wrapper').css('opacity', 0);
-		$('#czbox-image').attr('src', anchor.href);
+		
+		var url = anchor.href;
+		
+		if(typeof (dataUrl = $(anchor).data('czbox-href')) === 'string')
+		{
+			url = dataUrl;
+		}
+		
+		$('#czbox-image').attr('src', url);
 	
 		CzBox.update(anchor);
 	}
