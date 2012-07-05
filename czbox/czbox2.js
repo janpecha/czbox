@@ -47,7 +47,7 @@ CzBox.create = function() {
 		// rel attr regexp: /(czbox|lightbox)(\[(.+)\])?/
 		var rels = CzBox.enableRels.join('|');
 		rels = '(' + rels + ')(\\[(.+)\\])?';
-		CzBox.scanDocument('a[rel*=lightbox] > img, a[rel*=czbox] > img', new RegExp(rels));
+		CzBox.scanDocument('a[rel*=lightbox], a[rel*=czbox]', new RegExp(rels));
 	}
 }
 
@@ -172,9 +172,9 @@ CzBox.init = function() {
  */
 CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 	$(selector).each(function(index) {
-		// 'this' is item (<img>)
+		// 'this' is anchor
 		// vygenerovat seznam nodes - pouzit data-czbox-num, cat
-		var anchor = $(this).parent();
+		var anchor = $(this);
 		var rel = anchor.attr('rel');
 		rel = CzBox.parseRelAttr(rel, parseRelAttrRegExp);
 		
