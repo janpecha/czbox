@@ -13,18 +13,57 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>CzBox2</h1>
-		<span class="description">Photo lightbox based on <a href="http://zeptojs.com/">Zepto.JS</a> &amp; CSS</span>
+		
+		<h1>CzBox2 <span class="description">Great Photo Lightbox</span></h1>
 		
 		<div id="menu">
-			<a href="#single">Single images</a>
-			<a href="#roadmap">Roadmap</a>
+			<a href="#features">Features</a>
+			<a href="#example">Example</a>
 			<a href="#source">Source</a>
-			<a href="#docs">Docs</a>
+			<a href="#how-to-use">How to Use</a>
 			<a href="#license">License</a>
+			<a href="#" id="to-top">Back To Top</a>
 		</div>
 		
-		<h2 id="single">Single image gallery</h2>
+		
+		<div class="gallery" id="features">
+			<div class="gallery-item">
+				<div class="gallery-content">
+					<img src="images/example_features_jquery_zepto.gif" width="200" height="60" alt="">
+					<strong>jQuery &amp; Zepto.JS</strong><br>
+					or only pure JavaScript
+				</div>
+			</div>
+			
+			<div class="gallery-item">
+				<div class="gallery-content">
+					<img src="images/example_features_no_images.gif" width="200" height="60" alt="">
+					<strong>No skin images</strong><br>
+					default skin not used any images
+				</div>
+			</div>
+			
+			<div class="gallery-item">
+				<div class="gallery-content">
+					<img src="images/example_features_lightbox.gif" width="200" height="60" alt="">
+					<strong>Lightbox2 compatible</strong><br>
+					Don't have to change your sites.
+				</div>
+			</div>
+			
+			<div class="gallery-item">
+				<div class="gallery-content">
+					<img src="images/example_features_opensource.gif" width="200" height="60" alt="">
+					<strong>Open-Source</strong><br>
+					CzBox is available under New BSD License
+				</div>
+			</div>
+			
+			<span class="clearer"></span>
+		</div>
+		
+		<h2 id="example">Example</h2>
+		<h3>Single image</h2>
 		<div class="gallery">
 			<a href="Image000.jpg" rel="czbox">
 				<img src="Image000_thumb.jpg" title="This is description - lorem ipsum dolor sit amet">
@@ -46,22 +85,22 @@
 		</div>
 		
 		
-		<h2 id="roadmap">Roadmap gallery</h2>
+		<h3>Image set</h3>
 		<div class="gallery">
-			<a href="Image000.jpg" rel="czbox[myroutemap]">
-				<img src="Image000_thumb.jpg" title="First photo of roadmap">
+			<a href="Image000.jpg" rel="czbox[myroutetrip]">
+				<img src="Image000_thumb.jpg" title="First photo of roadtrip">
 			</a>
 			
-			<a href="Image001.jpg" rel="czbox[myroutemap]">
+			<a href="Image001.jpg" rel="czbox[myroutetrip]">
 				<img src="Image001_thumb.jpg">
 			</a>
 			
-			<a href="Image002.jpg" rel="czbox[myroutemap]">
+			<a href="Image002.jpg" rel="czbox[myroutetrip]">
 				<img src="Image002_thumb.jpg">
 			</a>
 			
-			<a href="Image003.jpg" rel="czbox[myroutemap]">
-				<img src="Image003_thumb.jpg" title="Last photo of roadmap">
+			<a href="Image003.jpg" rel="czbox[myroutetrip]">
+				<img src="Image003_thumb.jpg" title="Last photo of roadtrip">
 			</a>
 			
 			<span class="clearer"></span>
@@ -70,62 +109,46 @@
 		
 		<h2 id="source">Source</h2>
 		<p>
-			Source code is available on <img src="http://www.github.com/favicon.ico" alt="">&nbsp;<a href="http://github.com/janpecha/czbox/">GitHub</a>. Current version is <strong>1.0-rc3</strong> (<a href="https://github.com/janpecha/czbox/zipball/v1.0rc3">ZIP file</a>).
+			Source code is available on <img src="http://www.github.com/favicon.ico" alt="">&nbsp;<a href="http://github.com/janpecha/czbox/">GitHub</a>.
 		</p>
 		
+		<ul>
+<!--			<li> Current version is <strong>1.0-rc3</strong> (<a href="https://github.com/janpecha/czbox/zipball/v1.0rc3">ZIP file</a>).-->
+			<li><a href="https://github.com/janpecha/czbox/zipball/master">Download latest version</a> (ZIP file)</li>
+			<li><a href="https://github.com/janpecha/czbox/tags">Show all versions</a></li>
+		</ul>
 		
-		<h2 id="docs">Docs</h2>
+		<p>Source code is available under <a href="#license">New BSD License</a>.</p>
 		
-		<h3>Basic</h3>
-		<h4>Load Zepto.JS and CzBox</h4>
-		<p>Load <a href="http://zeptojs.com/">Zepto.JS</a>:</p>
+		
+		<h2 id="how-to-use">How to Use</h2>
+		
+		<h3>Step 1 - Load scripts &amp; skin</h3>
+		<p>Load Zepto.JS <strong>or</strong> jQuery (not necessary for pure-JS version):</p>
 		<pre><code class="jush">&lt;script type="text/javascript" src="zepto.js"&gt;&lt;/script></code></pre>
-		<p>Load CzBox2:</p>
+		<pre><code class="jush">&lt;script type="text/javascript" src="jquery.min.js"&gt;&lt;/script></code></pre>
+		<p>Load <code>czbox.js</code>:</p>
 		<pre><code class="jush">&lt;script type="text/javascript" src="./czbox/czbox2.js">&lt;/script&gt;</code></pre>
-
-		<h4>Set CzBox skin</h4>
+		
+		<p>Load CzBox skin:</p>
 		<pre><code class="jush">&lt;link rel="stylesheet" type="text/css" href="./czbox/czbox.css"&gt;</code></pre>
 		
-		<h4>Add image to HTML document</h4>
-		<p>Images must have set attribute <code>rel="czbox"</code></p>
-		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
-	&lt;img src="photos/foto1_big.jpg">
-&lt;/a></code></pre>
-		<p>or alternatively <code>rel="lightbox"</code></p>
-		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="lightbox">
-	&lt;img src="photos/foto1_big.jpg">
-&lt;/a></code></pre>
+		<p>Create CzBox:</p>
+		<pre><code class="jush">&lt;script type="text/javascript">CzBox.create();&lt;/script></code></pre>
 		
-		<h4>Run CzBox</h4>
-		<pre><code class="jush">&lt;script type="text/javascript">
-	Zepto(function($){
-		CzBox.create();
-	});
-&lt;/script></code></pre>
-		<p>or only (for script on end of document):</p>
-		<pre><code class="jush">&lt;script type="text/javascript">
-	CzBox.create();
-&lt;/script></code></pre>
-
-		<h3>Create roadmaps</h3>
-		<p>Use <code>rel="czbox[myRoadMapID]"</code> instead of <code>rel="czbox"</code>:</p>
-		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto1_big.jpg">&lt;/a>
-&lt;a href="photos/foto2_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto2_big.jpg">&lt;/a>
-&lt;a href="photos/foto3_thumb.jpg" rel="czbox[myroadmap]">&lt;img src="photos/foto3_big.jpg">&lt;/a></code></pre>
+		<h3>Step 2 - Activate</h3>
+		<p>Add <code>rel="czbox"</code> attribute to any link to activate CzBox (or alternatively <code>rel="lightbox"</code>):</p>
+		<pre><code class="jush">&lt;a href="photos/photo1.jpg" rel="czbox">Photo #1&lt;/a></code></pre>
 		
-		<h3>Image description</h3>
-		<p>We prefer <code>&lt;img title></code> attribute for image description:</p>
-		<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
-	&lt;img src="photos/foto1_big.jpg" title="this is description">
-&lt;/a></code></pre>
-<p>or you can use <code>&lt;a title></code></p>
-<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox" title="this is description">
-	&lt;img src="photos/foto1_big.jpg">
-&lt;/a></code></pre>
-<p>or <code>&lt;img alt></code></p>
-<pre><code class="jush">&lt;a href="photos/foto1_thumb.jpg" rel="czbox">
-	&lt;img src="photos/foto1_big.jpg" alt="this is description">
-&lt;/a></code></pre>
+		<p>Optionally you can add <code>&lt;a title></code> attribute for show a caption (or can use <code>&lt;a>&lt;img title></code> or <code>&lt;a>&lt;img alt></code>)</p>
+<pre><code class="jush">&lt;a href="photos/photo1.jpg" rel="czbox" title="This is a caption">Photo #1&lt;/a>
+&lt;a href="photos/photo1.jpg" rel="czbox">&lt;img src="thumb.jpg" title="This is a caption">&lt;/a>
+&lt;a href="photos/photo1.jpg" rel="czbox">&lt;img src="thumb.jpg" alt="This is a caption">&lt;/a></code></pre>
+		
+		<p>You can use <code>rel="czbox[groupId]"</code> for creating group of images.</p>
+		<pre><code class="jush">&lt;a href="photos/photo1.jpg" rel="czbox[group]">Photo #1&lt;/a>
+&lt;a href="photos/photo2.jpg" rel="czbox[group]">Photo #2&lt;/a>
+&lt;a href="photos/photo3.jpg" rel="czbox[group]">Photo #3&lt;/a></code></pre>
 		
 		
 		<h2 id="license">License</h2>
@@ -161,11 +184,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		</p>
 	</div>
 	
-	<!-- load Zepto.JS -->
-	<script type="text/javascript" src="../zepto.js"></script>
+	<!-- load Zepto.JS or jQuery -->
+	<script>document.write('<script src='+('__proto__' in {} ? '../zepto' : 'jquery.min')+'.js><\/script>')</script>
 	<!-- load CzBox -->
 	<script type="text/javascript" src="../czbox/czbox2.js"></script>
-	<!-- settings & create -->
+	<!-- settings & create CzBox -->
 	<script type="text/javascript">
 		// CzBox settings
 		// CzBox.langCs(); // czech translation
