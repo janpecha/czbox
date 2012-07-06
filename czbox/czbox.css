@@ -1,6 +1,6 @@
 /**
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-07-01-2
+ * @version		2012-07-06-1
  */
 
 #czbox-box {
@@ -40,6 +40,7 @@
 	display: block;
 	position: absolute;
 	text-align: center;
+	visibility: hidden;
 }
 
 #czbox-image-wrapper:before {

@@ -167,9 +167,11 @@ CzBox.init = function() {
 	$('#czbox-image').on('load', function() {
 		$('#czbox-loading').css('display', 'none');
 		
-		$(this).parent().animate({
-			opacity: 1
-		}, 600);
+		$(this).parent()
+			.css('visibility', 'visible')
+			.animate({
+				opacity: 1
+			}, 600);
 	});
 }
 
@@ -224,7 +226,8 @@ CzBox.open = function(anchor) {
 	
 		$('#czbox-loading').css('display', 'block');
 	
-		$('#czbox-image-wrapper').css('opacity', 0);
+		$('#czbox-image-wrapper').css('opacity', 0)
+			.css('visibility', 'hidden');
 		
 		var url = anchor.href;
 		
