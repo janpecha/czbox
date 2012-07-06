@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-07-04-1
+ * @version		2012-07-06-1
  */
 
 var CzBox = CzBox || {};
@@ -47,7 +47,16 @@ CzBox.create = function() {
 		// rel attr regexp: /(czbox|lightbox)(\[(.+)\])?/
 		var rels = CzBox.enableRels.join('|');
 		rels = '(' + rels + ')(\\[(.+)\\])?';
-		CzBox.scanDocument('a[rel*=lightbox], a[rel*=czbox]', new RegExp(rels));
+		
+		// generate selector
+		var selector = new Array;
+		
+		for(var i = 0; i < CzBox.enableRels.length; i++)
+		{
+			selector.push('a[rel*=' + CzBox.enableRels[i] + ']');
+		}
+		
+		CzBox.scanDocument(selector.join(', '), new RegExp(rels));
 	}
 }
 
