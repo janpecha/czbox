@@ -2,7 +2,7 @@
 CzBox2 - Great Photo Lightbox
 #############################
 
-- for jQuery & Zepto.JS or only pure JavaScript
+- for jQuery & Zepto.JS
 - default skin not used any images
 - Lightbox2 compatible - don't have to change your sites.
 - Open-Source - CzBox is available under New BSD License
