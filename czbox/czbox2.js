@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-07-06-1
+ * @version		2012-08-30-1
  */
 
 var CzBox = CzBox || {};
@@ -69,16 +69,16 @@ CzBox.modifyDom = function() {
 				+ '<div id="czbox-image-box">'
 					+ '<div id="czbox-description"></div>'
 					+ '<div id="czbox-info-bar">'
-						+ this.lang.textImage
+						+ '<span class="czbox-text">' + this.lang.textImage + '</span>'
 						+ ' <span id="czbox-image-number"></span> '
-						+ this.lang.textOf
+						+ '<span class="czbox-text">' + this.lang.textOf + '</span>'
 						+ ' <span id="czbox-images-count"></span> '
 					+ '</div>'
-					+ '<div id="czbox-loading"><span>' + this.lang.textLoading + '</span></div>'
+					+ '<div id="czbox-loading"><span class="czbox-text">' + this.lang.textLoading + '</span></div>'
 					+ '<div id="czbox-image-wrapper"><img id="czbox-image" src="#" alt=""></div>'
-					+ '<a id="czbox-btn-prev" href="#"><span>' + this.lang.textPrev + '</span></a>'
-					+ '<a id="czbox-btn-next" href="#"><span>' + this.lang.textNext + '</span></a>'
-					+ '<a id="czbox-btn-close" href="#"><span>' + this.lang.textClose + '</span></a>'
+					+ '<a id="czbox-btn-prev" href="#"><span class="czbox-text">' + this.lang.textPrev + '</span></a>'
+					+ '<a id="czbox-btn-next" href="#"><span class="czbox-text">' + this.lang.textNext + '</span></a>'
+					+ '<a id="czbox-btn-close" href="#"><span class="czbox-text">' + this.lang.textClose + '</span></a>'
 				+ '</div>'
 			+ '</div>'
 		);
