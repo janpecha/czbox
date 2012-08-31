@@ -72,7 +72,7 @@ h2 + h3 {
 #menu {
 	position: absolute;
 	right: 2em;
-	top: 2em;
+	top: 3em;
 }
 
 #menu a {
@@ -99,15 +99,17 @@ h2 + h3 {
 	display: block;
 	float: left;
 	width: 25%;
+	min-width: 230px;
 	text-align: center;
+	margin-bottom: 2px;
 }
 
 .gallery-content {
-	padding: 1em;
 	border: 1px solid transparent;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+	margin: 10px;
 }
 
 /*.gallery-content:hover {*/
@@ -122,6 +124,9 @@ h2 + h3 {
 	border: 1px solid silver;
 	border-radius: 4px;
 	background: #fff;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .clearer {
@@ -129,3 +134,65 @@ h2 + h3 {
 	display: block;
 }
 
+@media only screen and (max-width: 479px) {
+	h1 .description {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#menu {
+		position: static;
+	}
+	
+	#menu a {
+		display: block;
+		padding: 0.6em;
+	}
+	
+	p a, ul a, ol a {
+		padding: 0.5em;
+		display: inline-block;
+		background: #ddd;
+		margin-bottom: 1em;
+		border-radius: 6px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	#wrapper {
+		padding-top: 4em;
+	}
+	
+	#menu {
+		position: static;
+		margin-top: 1em;
+/*		top: 3em;*/
+	}
+	
+	#menu a {
+		background: #ddd;
+		margin-bottom: 3px;
+		border-radius: 6px;
+		padding: 0.6em 1em;
+	}
+	
+	a#to-top {
+		display: block;
+		left: 0;
+		width: 100%;
+		background: #333;
+		color: #ddd;
+		text-decoration: none;
+		text-align: center;
+		padding: 0.5em 0.2em;
+		border-bottom: 1px solid #111;
+		border-radius: 0;
+	}
+	
+	#to-top:after {
+		content:  " ↑";
+		vertical-align: top;
+		line-height: inherit;
+	}
+}
