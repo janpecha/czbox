@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-08-30-1
+ * @version		2012-09-04-1
  */
 
 var CzBox = CzBox || {};
@@ -112,41 +112,44 @@ CzBox.init = function() {
 	
 	// Keyboard events
 	$('body').on('keydown', function(e) {
-		var code;
+		if($('#czbox-box').hasClass('czbox-open'))
+		{
+			var code;
 		
-		if(!e)
-		{
-			var e = window.event;
-		}
+			if(!e)
+			{
+				var e = window.event;
+			}
 		
-		if(e.keyCode)
-		{
-			code = e.keyCode;
-		}
-		else if(e.which)
-		{
-			code = e.which;
-		}
+			if(e.keyCode)
+			{
+				code = e.keyCode;
+			}
+			else if(e.which)
+			{
+				code = e.which;
+			}
 
-		switch(code)
-		{
-			case 27/*ESC*/:
-				CzBox.close();
-				return false;
-				//break;
+			switch(code)
+			{
+				case 27/*ESC*/:
+					CzBox.close();
+					return false;
+					//break;
 			
-			case 13/*Enter*/:
-			case 39/*Right key*/:
-			case 40/*Down key*/:
-				CzBox.next();
-				return false;
-				//break;
+				case 13/*Enter*/:
+				case 39/*Right key*/:
+				case 40/*Down key*/:
+					CzBox.next();
+					return false;
+					//break;
 			
-			case 37/*Left key*/:
-			case 38/*Up key*/:
-				CzBox.prev();
-				return false;
-				//break;
+				case 37/*Left key*/:
+				case 38/*Up key*/:
+					CzBox.prev();
+					return false;
+					//break;
+			}
 		}
 	});
 	
