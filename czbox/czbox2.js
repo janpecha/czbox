@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-09-04-1
+ * @version		2012-10-26-1
  */
 
 var CzBox = CzBox || {};
@@ -30,6 +30,12 @@ CzBox.currentRel = '';
 
 /** Integer		0...(length-1) */
 CzBox.currentIndex = 0;
+
+/** String */
+CzBox._viewport = '';
+
+/** String */
+CzBox._overflow = '';
 
 
 CzBox.create = function() {
@@ -88,25 +94,22 @@ CzBox.modifyDom = function() {
 /** Events binding */
 CzBox.init = function() {
 	// Close event
-	$('#czbox-btn-close, #czbox-background').on('click', function() {
-		CzBox.close();
-		
-		return false;
+	$('#czbox-btn-close, #czbox-background').on({
+		click: this.handlerClose,
+		touchstart: this.handlerClose
 	});
 	
 	// Next event
-	$('#czbox-btn-next').on('click', function() {
-		CzBox.next();
-		
-		return false;
+	$('#czbox-btn-next').on({
+		click: this.handlerNext,
+		touchstart: this.handlerNext
 	});
 	// TODO: touch event - swipeRight, swipeDown
 	
 	// Prev event
-	$('#czbox-btn-prev').on('click', function() {
-		CzBox.prev();
-		
-		return false;
+	$('#czbox-btn-prev').on({
+		click: this.handlerPrev,
+		touchstart: this.handlerPrev
 	});
 	// TODO: touch event - swipeLeft, swipeUp
 	
@@ -160,11 +163,11 @@ CzBox.init = function() {
 	if (window.addEventListener)
 	{
 		/** DOMMouseScroll is for mozilla */
-		window.addEventListener('DOMMouseScroll', CzBox.handlerWheel, false);
+		window.addEventListener('DOMMouseScroll', CzBox.handlerCancelEvent, false);
 	}
 	
 	/** IE/Opera */
-	window.onmousewheel = document.onmousewheel = CzBox.handlerWheel;
+	window.onmousewheel = document.onmousewheel = CzBox.handlerCancelEvent;
 	
 	// Onload event
 	$('#czbox-image').on('load', function() {
@@ -225,7 +228,31 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 CzBox.open = function(anchor) {
 	if(anchor.href !== $('#czbox-image').attr('src'))
 	{
-		$('#czbox-box').addClass('czbox-open');
+		// Viewport settings
+		if(this._viewport === '')
+		{
+			var meta = $('meta[name="viewport"]').last();
+			this._viewport = meta.attr('content');
+			meta.attr('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no');
+		}
+		
+		// Hide page scrollbars
+		if(this._overflow === '')
+		{
+			var body = $('body').first();
+			this._overflow = body.css('overflow');
+			body.css('overflow', 'hidden');
+			
+			body.on({
+				touchstart: this.handlerCancelEvent,
+				touchmove: this.handlerCancelEvent
+			});
+		}
+		
+		// Open Photo
+		var box = $('#czbox-box');
+		box.addClass('czbox-open');
+//		window.scrollTo(box.attr('clientLeft'), box.attr('clientTop'));
 	
 		$('#czbox-loading').css('display', 'block');
 	
@@ -247,6 +274,22 @@ CzBox.open = function(anchor) {
 
 
 CzBox.close = function() {
+	var body = $('body').first();
+	// Detach event handlers
+	body.off({
+		touchstart: this.handlerCancelEvent,
+		touchmove: this.handlerCancelEvent
+	});
+	
+	// Return right overflow
+	body.css('overflow', this._overflow);
+	this._overflow = '';
+	
+	// Return right viewport
+	$('meta[name="viewport"]').last().attr('content', this._viewport);
+	this._viewport = '';
+	
+	// Close CzBox
 	$('#czbox-box').removeClass('czbox-open');
 	$('#czbox-image').attr('src', '');
 	$('#czbox-description').hide();
@@ -395,7 +438,7 @@ CzBox.getDescription = function(zeptoAnchor) {
 }
 
 
-CzBox.handlerWheel = function(e) {
+CzBox.handlerCancelEvent = function(e) {
 	if($('#czbox-box').hasClass('czbox-open'))
 	{
 		e = e ? e : window.event;
@@ -419,6 +462,28 @@ CzBox.handlerWheel = function(e) {
 }
 
 
+CzBox.handlerClose = function(e) {
+	CzBox.close();
+	return false;
+}
+
+
+CzBox.handlerNext = function(e) {
+	CzBox.next();
+	return false;
+}
+
+
+CzBox.handlerPrev = function(e) {
+	CzBox.prev();
+	return false;
+}
+
+
+//CzBox.handlerCancelEvent = function(e) { 
+//	e.preventDefault();
+//}
+
 
 /** Translations */
 CzBox.langCs = function() {
@@ -429,5 +494,4 @@ CzBox.langCs = function() {
 	CzBox.lang.textClose = "Zavřít";
 	CzBox.lang.textLoading = "Načítám";
 }
-
 
