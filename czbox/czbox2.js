@@ -516,11 +516,6 @@ CzBox.handlerHashChanged = function(e) {
 }
 
 
-//CzBox.handlerCancelEvent = function(e) { 
-//	e.preventDefault();
-//}
-
-
 /** Translations */
 CzBox.langCs = function() {
 	CzBox.lang.textImage = "Obrázek";
