@@ -37,6 +37,8 @@ CzBox._viewport = '';
 /** String */
 CzBox._overflow = '';
 
+CzBox._timer = '';
+
 
 CzBox.create = function() {
 	if(CzBox._created === false)
@@ -181,7 +183,7 @@ CzBox.init = function() {
 	});
 	
 	// Hash Fragment events
-	$(window).on('hashchange', this.handlerHashChanged);
+	//$(window).on('hashchange', this.handlerHashChanged); //TODO
 }
 
 
@@ -252,7 +254,8 @@ CzBox.open = function(anchor) {
 			});
 		}
 		
-		this.moveTo();
+//		this.moveTo();
+		this._timer = window.setInterval(this.moveTo, 1000);
 		
 		// Open Photo
 		var box = $('#czbox-box');// TODO
@@ -293,6 +296,12 @@ CzBox.close = function() {
 	// Return right viewport
 	$('meta[name="viewport"]').last().attr('content', this._viewport);
 	this._viewport = '';
+	
+	// Clear timer
+	if(this._timer !== '')
+	{
+		window.clearInterval(this._timer);
+	}
 	
 	// Close CzBox
 	$('#czbox-box').removeClass('czbox-open');
@@ -445,7 +454,15 @@ CzBox.getDescription = function(zeptoAnchor) {
 
 CzBox.moveTo = function()
 {
-	window.location.hash = '#czbox-box';
+//	window.location.hash = '#czbox-box';
+//	$('#czbox-box').get(0).scrollIntoView();
+	$('#czbox-box').css({
+		position: 'absolute',
+		top: window.pageYOffset,
+		left: window.pageXOffset
+	});
+	
+//	this._timer = window.setTimeout(CzBox.moveTo, 1000);
 }
 
 
