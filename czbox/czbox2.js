@@ -179,6 +179,9 @@ CzBox.init = function() {
 				opacity: 1
 			}, 600);
 	});
+	
+	// Hash Fragment events
+	$(window).on('hashchange', this.handlerHashChanged);
 }
 
 
@@ -249,8 +252,10 @@ CzBox.open = function(anchor) {
 			});
 		}
 		
+		this.moveTo();
+		
 		// Open Photo
-		var box = $('#czbox-box');
+		var box = $('#czbox-box');// TODO
 		box.addClass('czbox-open');
 //		window.scrollTo(box.attr('clientLeft'), box.attr('clientTop'));
 	
@@ -438,6 +443,12 @@ CzBox.getDescription = function(zeptoAnchor) {
 }
 
 
+CzBox.moveTo = function()
+{
+	window.location.hash = '#czbox-box';
+}
+
+
 CzBox.handlerCancelEvent = function(e) {
 	if($('#czbox-box').hasClass('czbox-open'))
 	{
@@ -477,6 +488,14 @@ CzBox.handlerNext = function(e) {
 CzBox.handlerPrev = function(e) {
 	CzBox.prev();
 	return false;
+}
+
+
+CzBox.handlerHashChanged = function(e) {
+	alert('changed');
+	if (location.hash !== "#czbox-box") {
+        CzBox.close();
+    }
 }
 
 
