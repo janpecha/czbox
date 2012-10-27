@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-10-27-1
+ * @version		2012-10-27-2
  */
 
 var CzBox = CzBox || {};
@@ -125,6 +125,7 @@ CzBox.init = function() {
 	});
 	// TODO: touch event - swipeLeft, swipeUp
 	
+	
 	// Keyboard events
 	$('body').on('keydown', function(e) {
 		if($('#czbox-box').hasClass('czbox-open'))
@@ -194,6 +195,19 @@ CzBox.init = function() {
 	
 	// Hash Fragment events
 	//$(window).on('hashchange', this.handlerHashChanged); //TODO
+	$(window).on('orientationchange', function(e) {
+		alert('change');// TODO: czbox-opened
+		if(CzBox._viewport !== '')
+		{
+			CzBox._viewport.valid = false;
+		}
+	}).on('resize', function(e) {
+		alert('resize ' + window.orientation);
+	})
+//	.on('deviceorientation', function(e) {
+//		alert('deviceorientation');
+//	})
+	;
 }
 
 
@@ -250,7 +264,8 @@ CzBox.open = function(anchor) {
 			this._viewport = {
 				content: meta.attr('content'),
 				x: window.pageXOffset,
-				y: window.pageYOffset
+				y: window.pageYOffset,
+				valid: true
 			};
 //			alert(window.pageXOffset + ' | ' + window.pageYOffset);
 			meta.attr('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no');
@@ -316,7 +331,15 @@ CzBox.close = function() {
 	
 	window.setTimeout(function() {
 //		alert(viewport.x + ' | ' + viewport.y);
-		window.scrollTo(viewport.x, viewport.y);
+		if(viewport.valid)
+		{
+			alert('valid');
+			window.scrollTo(viewport.x, viewport.y);
+		}
+		else
+		{
+			alert('invalid');
+		}
 //		alert(window.pageXOffset + ' | ' + window.pageYOffset);
 	}, 500);
 	
