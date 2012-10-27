@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-10-26-1
+ * @version		2012-10-27-1
  */
 
 var CzBox = CzBox || {};
@@ -31,7 +31,7 @@ CzBox.currentRel = '';
 /** Integer		0...(length-1) */
 CzBox.currentIndex = 0;
 
-/** String */
+/** Object */
 CzBox._viewport = '';
 
 /** String */
@@ -100,6 +100,16 @@ CzBox.init = function() {
 		click: this.handlerClose,
 		touchstart: this.handlerClose
 	});
+	
+//	$(window).on('popstate', function(e) {
+////		alert(e.state);
+////		return false;
+//		if(e.state.page === 'czbox-box-opened')
+//		{
+//			CzBox.close();
+//			// remove state from history - nelze
+//		}
+//	});
 	
 	// Next event
 	$('#czbox-btn-next').on({
@@ -237,7 +247,12 @@ CzBox.open = function(anchor) {
 		if(this._viewport === '')
 		{
 			var meta = $('meta[name="viewport"]').last();
-			this._viewport = meta.attr('content');
+			this._viewport = {
+				content: meta.attr('content'),
+				x: window.pageXOffset,
+				y: window.pageYOffset
+			};
+//			alert(window.pageXOffset + ' | ' + window.pageYOffset);
 			meta.attr('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no');
 		}
 		
@@ -252,10 +267,12 @@ CzBox.open = function(anchor) {
 				touchstart: this.handlerCancelEvent,
 				touchmove: this.handlerCancelEvent
 			});
+			
+//			history.pushState({page: 'czbox-box-opened'}, window.title);
 		}
 		
-//		this.moveTo();
-		this._timer = window.setInterval(this.moveTo, 1000);
+		this.moveTo();
+//		this._timer = window.setInterval(this.moveTo, 1000);
 		
 		// Open Photo
 		var box = $('#czbox-box');// TODO
@@ -288,20 +305,28 @@ CzBox.close = function() {
 		touchstart: this.handlerCancelEvent,
 		touchmove: this.handlerCancelEvent
 	});
-	
+
 	// Return right overflow
 	body.css('overflow', this._overflow);
 	this._overflow = '';
 	
 	// Return right viewport
-	$('meta[name="viewport"]').last().attr('content', this._viewport);
+	var viewport = this._viewport;
+	$('meta[name="viewport"]').last().attr('content', viewport.content);
+	
+	window.setTimeout(function() {
+//		alert(viewport.x + ' | ' + viewport.y);
+		window.scrollTo(viewport.x, viewport.y);
+//		alert(window.pageXOffset + ' | ' + window.pageYOffset);
+	}, 500);
+	
 	this._viewport = '';
 	
 	// Clear timer
-	if(this._timer !== '')
-	{
-		window.clearInterval(this._timer);
-	}
+//	if(this._timer !== '')
+//	{
+//		window.clearInterval(this._timer);
+//	}
 	
 	// Close CzBox
 	$('#czbox-box').removeClass('czbox-open');
@@ -456,11 +481,19 @@ CzBox.moveTo = function()
 {
 //	window.location.hash = '#czbox-box';
 //	$('#czbox-box').get(0).scrollIntoView();
-	$('#czbox-box').css({
-		position: 'absolute',
-		top: window.pageYOffset,
-		left: window.pageXOffset
-	});
+//	alert(window.pageXOffset + ' | ' + window.pageYOffset);
+//	var box = $('#czbox-box').get(0);
+//	alert(box.clientLeft + ' | ' + box.clientTop);
+//	window.clearInterval(this._timer);
+	// pouze pro mobilni browsery
+	window.setTimeout(function() {
+		$('#czbox-box').get(0).scrollIntoView();
+	}, 2000);
+//	$('#czbox-box').css({
+//		position: 'absolute',
+//		top: window.pageYOffset,
+//		left: window.pageXOffset
+//	});
 	
 //	this._timer = window.setTimeout(CzBox.moveTo, 1000);
 }
@@ -508,12 +541,12 @@ CzBox.handlerPrev = function(e) {
 }
 
 
-CzBox.handlerHashChanged = function(e) {
-	alert('changed');
-	if (location.hash !== "#czbox-box") {
-        CzBox.close();
-    }
-}
+//CzBox.handlerHashChanged = function(e) {
+//	alert('changed');
+//	if (location.hash !== "#czbox-box") {
+//        CzBox.close();
+//    }
+//}
 
 
 /** Translations */
