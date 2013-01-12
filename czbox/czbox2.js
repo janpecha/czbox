@@ -1,7 +1,7 @@
 /**
  * CzBox2 - simple Zepto.js / jQuery lightbox
  * @author		Jan Pecha, <janpecha@email.cz>
- * @version		2012-09-04-1
+ * @version		2013-01-12-1
  */
 
 var CzBox = CzBox || {};
@@ -13,7 +13,7 @@ CzBox.lang = {
 	textPrev: "Previous",
 	textNext: "Next",
 	textClose: "Close",
-	textLoading: "Loading",
+	textLoading: "Loading"
 };
 
 /** Object */
@@ -49,7 +49,7 @@ CzBox.create = function() {
 		rels = '(' + rels + ')(\\[(.+)\\])?';
 		
 		// generate selector
-		var selector = new Array;
+		var selector = [];
 		
 		for(var i = 0; i < CzBox.enableRels.length; i++)
 		{
@@ -58,7 +58,7 @@ CzBox.create = function() {
 		
 		CzBox.scanDocument(selector.join(', '), new RegExp(rels));
 	}
-}
+};
 
 
 CzBox.modifyDom = function() {
@@ -83,7 +83,7 @@ CzBox.modifyDom = function() {
 			+ '</div>'
 		);
 	}
-}
+};
 
 /** Events binding */
 CzBox.init = function() {
@@ -118,7 +118,7 @@ CzBox.init = function() {
 		
 			if(!e)
 			{
-				var e = window.event;
+				e = window.event;
 			}
 		
 			if(e.keyCode)
@@ -176,7 +176,7 @@ CzBox.init = function() {
 				opacity: 1
 			}, 600);
 	});
-}
+};
 
 
 /**
@@ -203,7 +203,7 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 		
 		if(typeof CzBox.nodes[rel] === 'undefined')
 		{
-			CzBox.nodes[rel] = new Array;
+			CzBox.nodes[rel] = [];
 		}
 		
 		CzBox.nodes[rel].push(anchor);
@@ -216,7 +216,7 @@ CzBox.scanDocument = function(selector, parseRelAttrRegExp) {
 			return false;
 		});
 	});
-}
+};
 
 
 /**
@@ -243,14 +243,14 @@ CzBox.open = function(anchor) {
 	
 		CzBox.update(anchor);
 	}
-}
+};
 
 
 CzBox.close = function() {
 	$('#czbox-box').removeClass('czbox-open');
 	$('#czbox-image').attr('src', '');
 	$('#czbox-description').hide();
-}
+};
 
 
 CzBox.next = function() {
@@ -261,7 +261,7 @@ CzBox.next = function() {
 			CzBox.open(CzBox.nodes[CzBox.currentRel][CzBox.currentIndex + 1].get(0));
 		}
 	}
-}
+};
 
 
 CzBox.prev = function() {
@@ -272,7 +272,7 @@ CzBox.prev = function() {
 			CzBox.open(CzBox.nodes[CzBox.currentRel][CzBox.currentIndex - 1].get(0));
 		}
 	}
-}
+};
 
 
 /**
@@ -336,7 +336,7 @@ CzBox.update = function(anchor) {
 	// Update private data
 	CzBox.currentRel = rel;
 	CzBox.currentIndex = index;
-}
+};
 
 
 /**
@@ -360,7 +360,7 @@ CzBox.parseRelAttr = function(rel, regexp) {
 	}
 	
 	return result;
-}
+};
 
 
 /**
@@ -374,25 +374,31 @@ CzBox.getDescription = function(zeptoAnchor) {
 	var img = zeptoAnchor.children('img').first();
 	
 	// image title
-	if(description = img.attr('title'))
+	description = img.attr('title');
+	
+	if(description)
 	{
 		return description;
 	}
 	
 	// anchor title
-	if(description = zeptoAnchor.attr('title'))
+	description = zeptoAnchor.attr('title');
+	
+	if(description)
 	{
 		return description;
 	}
 	
 	// image alt
-	if(description = img.attr('alt'))
+	description = img.attr('alt');
+	
+	if(description)
 	{
 		return description;
 	}
 	
 	return '';
-}
+};
 
 
 CzBox.handlerWheel = function(e) {
@@ -416,7 +422,7 @@ CzBox.handlerWheel = function(e) {
 		
 		return false;
 	}
-}
+};
 
 
 
@@ -428,6 +434,6 @@ CzBox.langCs = function() {
 	CzBox.lang.textNext = "Další";
 	CzBox.lang.textClose = "Zavřít";
 	CzBox.lang.textLoading = "Načítám";
-}
+};
 
 
