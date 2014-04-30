@@ -37,7 +37,7 @@ Create CzBox:
 ``` html
 <script type="text/javascript">CzBox.create();</script>
 ```
-	
+
 
 ### Step 2 - Activate
 
@@ -51,7 +51,7 @@ Add ```rel="czbox"``` attribute to any link to activate CzBox (or alternatively 
 
 ``` html
 <a href="http://example.com/" rel="czbox" data-czbox-href="photos/photo1.jpg">Photo #1</a>
-``` 
+```
 
 
 Optionally you can add ```<a title>``` attribute for show a caption (or can use ```<a><img title>``` or ```<a><img alt>```)
@@ -63,7 +63,7 @@ Optionally you can add ```<a title>``` attribute for show a caption (or can use 
 ```
 
 You can use ```rel="czbox[groupId]"``` for creating group of images.
-	
+
 ``` html
 <a href="photos/photo1.jpg" rel="czbox[group]">Photo #1</a>
 <a href="photos/photo2.jpg" rel="czbox[group]">Photo #2</a>
